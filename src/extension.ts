@@ -8,7 +8,7 @@ import {
 } from "vscode";
 import { SelectionStrategy } from "./api";
 import { TypescriptStrategy } from "./languages/typescript";
-awf;
+
 export function activate(context: ExtensionContext): void {
   const verySmartSelect = new VerySmartSelect();
   const growCommand = commands.registerCommand("very-smart-select.grow", () => {
