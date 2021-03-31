@@ -1,78 +1,72 @@
 {
-    "name": "very-smart-select",
-    "displayName": "Very Smart Select",
-    "description": "Language-aware smart select; much smarter than the default smart select.",
-    "version": "0.3.0",
-    "publisher": "closedcontour",
-    "repository": "https://github.com/closedcontour/very-smart-select",
-    "engines": {
-        "vscode": "^1.21.0"
-    },
-    "categories": [
-        "Other"
+  "name": "very-smart-select",
+  "displayName": "Very Smart Select",
+  "description": "Language-aware smart select; much smarter than the default smart select.",
+  "version": "0.3.0",
+  "publisher": "tgreen7",
+  "repository": "https://github.com/tgreen7/very-smart-select",
+  "engines": {
+    "vscode": "^1.21.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "onCommand:very-smart-select.grow",
+    "onCommand:very-smart-select.shrink"
+  ],
+  "main": "./out/extension",
+  "contributes": {
+    "commands": [
+      {
+        "command": "very-smart-select.grow",
+        "title": "Very Smart Select: Grow the Selection"
+      },
+      {
+        "command": "very-smart-select.shrink",
+        "title": "Very Smart Select: Shrink the selection"
+      }
     ],
-    "activationEvents": [
-        "onCommand:very-smart-select.grow",
-        "onCommand:very-smart-select.shrink"
+    "keybindings": [
+      {
+        "command": "very-smart-select.grow",
+        "key": "shift+alt+right",
+        "mac": "ctrl+shift+cmd+right",
+        "when": "editorTextFocus"
+      },
+      {
+        "command": "very-smart-select.shrink",
+        "key": "shift+alt+left",
+        "mac": "ctrl+shift+cmd+left",
+        "when": "editorTextFocus"
+      }
     ],
-    "main": "./out/extension",
-    "contributes": {
-        "commands": [
-            {
-                "command": "very-smart-select.grow",
-                "title": "Very Smart Select: Grow the Selection"
-            },
-            {
-                "command": "very-smart-select.shrink",
-                "title": "Very Smart Select: Shrink the selection"
-            }
-        ],
-        "keybindings": [
-            {
-                "command": "very-smart-select.grow",
-                "key": "shift+alt+right",
-                "mac": "ctrl+shift+cmd+right",
-                "when": "editorTextFocus"
-            },
-            {
-                "command": "very-smart-select.shrink",
-                "key": "shift+alt+left",
-                "mac": "ctrl+shift+cmd+left",
-                "when": "editorTextFocus"
-            }
-        ],
-        "configuration": {
-            "type": "object",
-            "title": "Very Smart Select",
-            "properties": {
-                "very-smart-select.excludeBrackets": {
-                    "type": "boolean",
-                    "default": false,
-                    "description": "will exclude function/object brackets when expanding."
-                }
-            }
+    "configuration": {
+      "type": "object",
+      "title": "Very Smart Select",
+      "properties": {
+        "very-smart-select.excludeBrackets": {
+          "type": "boolean",
+          "default": true,
+          "description": "will exclude function/object brackets when expanding."
         }
-    },
-    "scripts": {
-        "vscode:prepublish": "npm run compile",
-        "compile": "tsc -p ./",
-        "watch": "tsc -watch -p ./",
-        "postinstall": "node ./node_modules/vscode/bin/install",
-        "test": "npm run compile && node ./node_modules/vscode/bin/test"
-    },
-    "dependencies": {
-        "typescript": "^2.8.1"
-    },
-    "devDependencies": {
-        "@types/mocha": "^2.2.42",
-        "@types/node": "^7.0.43",
-        "tslint": "^5.8.0",
-        "vscode": "^1"
-    },
-    "prettier": {
-        "printWidth": 100,
-        "tabWidth": 4,
-        "trailingComma": "none",
-        "arrowParens": "avoid"
+      }
     }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "postinstall": "node ./node_modules/vscode/bin/install",
+    "test": "npm run compile && node ./node_modules/vscode/bin/test"
+  },
+  "dependencies": {
+    "typescript": "^2.8.1"
+  },
+  "devDependencies": {
+    "@types/mocha": "^2.2.42",
+    "@types/node": "^7.0.43",
+    "tslint": "^5.8.0",
+    "vscode": "^1"
+  }
 }

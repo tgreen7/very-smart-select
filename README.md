@@ -1,8 +1,8 @@
-### Note: this plugin is obsolete since [native SmartSelect improvements were introduced](https://code.visualstudio.com/updates/v1_35#_smart-selection-for-javascript-and-typescript).
+Forked from https://github.com/closedcontour/very-smart-select
 
 A much smarter, drop-in replacement to the default Expand/Shrink Selection commands.
 
-![](https://raw.githubusercontent.com/closedcontour/very-smart-select/master/image/very-smart-select.gif)
+![](https://raw.githubusercontent.com/tgreen7/very-smart-select/master/image/very-smart-select.gif)
 
 Currently supported languages:
 * Typescript (.ts, .tsx)
