@@ -11,6 +11,8 @@ import {
   isObjectBindingPattern,
   isArrayLiteralExpression,
   isArrayBindingPattern,
+  isTemplateLiteral,
+  isStringLiteral,
 } from "typescript";
 
 function pathToPositionInternal(
@@ -124,27 +126,26 @@ export class TypescriptStrategy implements SelectionStrategy {
             isObjectBindingPattern,
             isArrayBindingPattern,
             isArrayLiteralExpression,
+            isTemplateLiteral,
+            isStringLiteral,
           ];
+          // if we are already inside the bracket selection then expand to include them
+          const alreadyInBrackets =
+            outRange.start + 1 === range.start &&
+            outRange.end - 1 === range.end;
           if (
+            !alreadyInBrackets &&
             nodeTypesWithBrackets.some((isType) =>
               isType(expansionNodeSelected)
             )
           ) {
-            const alreadyInBrackets =
-              outRange.start + 1 === range.start &&
-              outRange.end - 1 === range.end;
-            // if we are already inside the bracket selection then expand to include them
-            if (!alreadyInBrackets) {
-              outRange.start++;
-              outRange.end--;
-            }
+            outRange.start++;
+            outRange.end--;
           }
         }
         return outRange;
       })
-      .filter((range) => range !== undefined)
-      // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-      .map((range) => range!);
+      .filter((range): range is Range => range !== undefined);
     return outRanges;
   }
 }

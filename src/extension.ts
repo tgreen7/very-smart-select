@@ -26,8 +26,9 @@ export function activate(context: ExtensionContext): void {
   context.subscriptions.push(verySmartSelect);
 }
 
-// eslint-disable-next-line @typescript-eslint/no-empty-function
-export function deactivate(): void {}
+export function deactivate(): void {
+  // nothing to cleanup
+}
 
 function areSelectionsEqual(
   selections: Selection[],
